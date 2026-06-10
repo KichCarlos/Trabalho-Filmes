@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Editar Filme</title>
+
+<style>
+
+body{
+    background:#121212;
+    font-family:Arial, sans-serif;
+    color:white;
+}
+
+.card{
+    width:600px;
+    margin:50px auto;
+    background:#1e1e1e;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 0 20px rgba(0,0,0,0.5);
+}
+
+h1{
+    color:#4dabff;
+}
+
+label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:5px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#2d2d2d;
+    color:white;
+    box-sizing:border-box;
+}
+
+input:focus{
+    outline:none;
+    border:2px solid #4dabff;
+}
+
+button{
+    margin-top:20px;
+    background:#4dabff;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#339af0;
+}
+
+.voltar{
+    margin-left:10px;
+    background:#555;
+    color:white;
+    text-decoration:none;
+    padding:12px 20px;
+    border-radius:8px;
+}
+
+.voltar:hover{
+    background:#666;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>✏️ Editar Filme</h1>
+
+    <form method="post">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">
+            Salvar Alterações
+        </button>
+
+        <a href="/" class="voltar">
+            Voltar
+        </a>
+
+    </form>
+
+</div>
+
+</body>
+</html>

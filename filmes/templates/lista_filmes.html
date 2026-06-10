@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Catálogo de Filmes</title>
+
+<style>
+
+body{
+    font-family:Arial, sans-serif;
+    background:#121212;
+    color:white;
+    margin:0;
+    padding:30px;
+}
+
+.container{
+    background:#1e1e1e;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 0 20px rgba(0,0,0,0.5);
+}
+
+h1{
+    text-align:center;
+    color:#4dabff;
+    margin-bottom:30px;
+}
+
+.topo{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.botao{
+    background:#4dabff;
+    color:white;
+    text-decoration:none;
+    padding:12px 18px;
+    border-radius:8px;
+}
+
+.botao:hover{
+    background:#339af0;
+}
+
+.info{
+    text-align:right;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#4dabff;
+    color:white;
+    padding:12px;
+}
+
+td{
+    padding:15px;
+    border-bottom:1px solid #333;
+    text-align:center;
+}
+
+tr:hover{
+    background:#252525;
+}
+
+.poster{
+    width:220px;
+    border-radius:10px;
+}
+
+.editar{
+    background:#ff9800;
+    color:white;
+    padding:8px 12px;
+    border-radius:6px;
+    text-decoration:none;
+}
+
+.editar:hover{
+    background:#e68900;
+}
+
+.excluir{
+    background:#f44336;
+    color:white;
+    padding:8px 12px;
+    border-radius:6px;
+    text-decoration:none;
+}
+
+.excluir:hover{
+    background:#d32f2f;
+}
+
+.nota{
+    background:#4dabff;
+    color:white;
+    padding:6px 12px;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🎬 Catálogo de Filmes</h1>
+
+    <div class="topo">
+
+        <a href="/adicionar/" class="botao">
+            + Adicionar Filme
+        </a>
+
+        <div class="info">
+            <strong>Total de Filmes:</strong> {{ quantidade }}
+            <br>
+            <strong>Média das Notas:</strong> {{ media }}
+        </div>
+
+    </div>
+
+    <table>
+
+        <tr>
+            <th>Pôster</th>
+            <th>Título</th>
+            <th>Ano</th>
+            <th>Diretor</th>
+            <th>Gênero</th>
+            <th>Nota</th>
+            <th>Ações</th>
+        </tr>
+
+        {% for filme in filmes %}
+
+        <tr>
+
+            <td>
+                <img src="{{ filme.poster }}" class="poster">
+            </td>
+
+            <td>{{ filme.titulo }}</td>
+            <td>{{ filme.ano }}</td>
+            <td>{{ filme.diretor }}</td>
+            <td>{{ filme.genero }}</td>
+
+            <td>
+                <span class="nota">
+                    {{ filme.nota }}
+                </span>
+            </td>
+
+            <td>
+
+                <a href="/editar/{{ filme.id }}/" class="editar">
+                    Editar
+                </a>
+
+                <br><br>
+
+                <a href="/excluir/{{ filme.id }}/" class="excluir">
+                    Excluir
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+</body>
+</html>
